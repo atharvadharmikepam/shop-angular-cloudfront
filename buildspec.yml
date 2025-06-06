@@ -1,10 +1,16 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - npm install
   build:
     commands:
-      - zip -r client-app.zip .
+      - npm run build
+  post_build:
+    commands:
+      - aws s3 sync dist/ s3://$S3_BUCKET --delete
 
 artifacts:
   files:
-    - client-app.zip
+    - '**/*'
