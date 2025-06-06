@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - zip -r client-app.zip .
+
+artifacts:
+  files:
+    - client-app.zip
